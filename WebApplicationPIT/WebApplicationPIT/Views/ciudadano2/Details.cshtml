@@ -1,0 +1,83 @@
+﻿@model WebApplicationPIT.Models.ciudadano
+
+@{
+    ViewBag.Title = "Details";
+     Layout = "~/Views/Shared/_Navigation.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ciudadano</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nacionalidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nacionalidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipodocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipodocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numdocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numdocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iddepartamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iddepartamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idprovincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idprovincia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iddistrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iddistrito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.idciudadano }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

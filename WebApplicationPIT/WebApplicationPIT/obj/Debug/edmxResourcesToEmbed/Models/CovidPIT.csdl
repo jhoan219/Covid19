@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ciudadano1">
+    <Key>
+      <PropertyRef Name="idciudadano" />
+    </Key>
+    <Property Name="idciudadano" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombres" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nacionalidad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipodocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numdocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iddepartamento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idprovincia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iddistrito" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idestado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__ciudadano__idest__66603565" FromRole="ciudadano1" ToRole="estado" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idestado" />
+    </Key>
+    <Property Name="idestado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ciudadano1" Relationship="Self.FK__ciudadano__idest__66603565" FromRole="estado" ToRole="ciudadano1" />
+  </EntityType>
+  <Association Name="FK__ciudadano__idest__66603565">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="ciudadano1" Type="Self.ciudadano1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idestado" />
+      </Principal>
+      <Dependent Role="ciudadano1">
+        <PropertyRef Name="idestado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PITEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ciudadano1" EntityType="Self.ciudadano1" />
+    <EntitySet Name="estado" EntityType="Self.estado" />
+    <AssociationSet Name="FK__ciudadano__idest__66603565" Association="Self.FK__ciudadano__idest__66603565">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="ciudadano1" EntitySet="ciudadano1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

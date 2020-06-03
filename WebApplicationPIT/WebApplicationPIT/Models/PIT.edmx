@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudadano">
+          <Key>
+            <PropertyRef Name="idciudadano" />
+          </Key>
+          <Property Name="idciudadano" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nacionalidad" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="tipodocumento" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="numdocumento" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="iddepartamento" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idprovincia" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="iddistrito" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idestado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="idestado" />
+          </Key>
+          <Property Name="idestado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ciudadano__idest__73BA3083">
+          <End Role="estado" Type="Self.estado" Multiplicity="1" />
+          <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="idestado" />
+            </Principal>
+            <Dependent Role="ciudadano">
+              <PropertyRef Name="idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PITModelStoreContainer">
+          <EntitySet Name="ciudadano" EntityType="Self.ciudadano" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ciudadano__idest__73BA3083" Association="Self.FK__ciudadano__idest__73BA3083">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="ciudadano" EntitySet="ciudadano" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudadano">
+          <Key>
+            <PropertyRef Name="idciudadano" />
+          </Key>
+          <Property Name="idciudadano" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nacionalidad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipodocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numdocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iddepartamento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idprovincia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iddistrito" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idestado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="estado" Relationship="Self.FK__ciudadano__idest__73BA3083" FromRole="ciudadano" ToRole="estado" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="idestado" />
+          </Key>
+          <Property Name="idestado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ciudadano" Relationship="Self.FK__ciudadano__idest__73BA3083" FromRole="estado" ToRole="ciudadano" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ciudadano__idest__73BA3083">
+          <End Role="estado" Type="Self.estado" Multiplicity="1" />
+          <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="idestado" />
+            </Principal>
+            <Dependent Role="ciudadano">
+              <PropertyRef Name="idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PITEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudadano" EntityType="Self.ciudadano" />
+          <EntitySet Name="estado" EntityType="Self.estado" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK__ciudadano__idest__73BA3083" Association="Self.FK__ciudadano__idest__73BA3083">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="ciudadano" EntitySet="ciudadano" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PITModelStoreContainer" CdmEntityContainer="PITEntities3">
+          <EntitySetMapping Name="ciudadano">
+            <EntityTypeMapping TypeName="PITModel.ciudadano">
+              <MappingFragment StoreEntitySet="ciudadano">
+                <ScalarProperty Name="idciudadano" ColumnName="idciudadano" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="nacionalidad" ColumnName="nacionalidad" />
+                <ScalarProperty Name="tipodocumento" ColumnName="tipodocumento" />
+                <ScalarProperty Name="numdocumento" ColumnName="numdocumento" />
+                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="idestado" ColumnName="idestado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado">
+            <EntityTypeMapping TypeName="PITModel.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="idestado" ColumnName="idestado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PITModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebApplicationPIT.Models.ciudadano>
+
+@{
+    ViewBag.Title = "CiudadanoXEstado";
+     Layout = "~/Views/Shared/_Navigation.cshtml";
+}
+
+<h2>Ciudadano por Estado</h2>
+
+<p>
+    @Html.ActionLink("Registrar", "Create")
+    @using (Html.BeginForm())
+    {
+        <span>Seleccione</span>
+        @Html.DropDownList("estado", (SelectList)ViewBag.estados, string.Empty)
+        <input type="submit" value="Consultar" class="btn btn-default" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.nombres)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.nacionalidad)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.tipodocumento)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.numdocumento)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.iddepartamento)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.idprovincia)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.iddistrito)
+        </th>
+        <th class="h5 mb-0 font-weight-bold text-gray-800">
+            @Html.DisplayNameFor(model => model.estado.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.nombres)
+        </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.nacionalidad)
+    </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.tipodocumento)
+    </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.numdocumento)
+    </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.iddepartamento)
+    </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.idprovincia)
+    </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.iddistrito)
+    </td>
+    <td class="h5 mb-0 font-weight-bold text-gray-800">
+        @Html.DisplayFor(modelItem => item.estado.descripcion)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.idciudadano }) |
+        @Html.ActionLink("Details", "Details", new { id = item.idciudadano }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idciudadano })
+    </td>
+</tr>
+    }
+    @Html.ActionLink("Regresar", "Index")
+</table>

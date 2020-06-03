@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PITModelStoreContainer" CdmEntityContainer="PITEntities1">
+    <EntitySetMapping Name="ciudadano1">
+      <EntityTypeMapping TypeName="PITModel.ciudadano1">
+        <MappingFragment StoreEntitySet="ciudadano1">
+          <ScalarProperty Name="idciudadano" ColumnName="idciudadano" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="nacionalidad" ColumnName="nacionalidad" />
+          <ScalarProperty Name="tipodocumento" ColumnName="tipodocumento" />
+          <ScalarProperty Name="numdocumento" ColumnName="numdocumento" />
+          <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado">
+      <EntityTypeMapping TypeName="PITModel.estado">
+        <MappingFragment StoreEntitySet="estado">
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

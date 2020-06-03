@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ciudadano">
+    <Key>
+      <PropertyRef Name="idciudadano" />
+    </Key>
+    <Property Name="idciudadano" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombres" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="idnacionalidad" Type="int" Nullable="false" />
+    <Property Name="iddocumento" Type="int" Nullable="false" />
+    <Property Name="numdocumento" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="iddepartamento" Type="int" Nullable="false" />
+    <Property Name="idprovincia" Type="int" Nullable="false" />
+    <Property Name="iddistrito" Type="int" Nullable="false" />
+    <Property Name="idestado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="departamento">
+    <Key>
+      <PropertyRef Name="iddepartamento" />
+    </Key>
+    <Property Name="iddepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="20" />
+    <Property Name="idprovincia" Type="int" />
+  </EntityType>
+  <EntityType Name="distrito">
+    <Key>
+      <PropertyRef Name="iddistrito" />
+    </Key>
+    <Property Name="iddistrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="iddepartamento" Type="int" />
+  </EntityType>
+  <EntityType Name="documento">
+    <Key>
+      <PropertyRef Name="iddocumento" />
+    </Key>
+    <Property Name="iddocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idestado" />
+    </Key>
+    <Property Name="idestado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nacionalidad">
+    <Key>
+      <PropertyRef Name="idnacionalidad" />
+    </Key>
+    <Property Name="idnacionalidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="idprovincia" />
+    </Key>
+    <Property Name="idprovincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ubicacion">
+    <Key>
+      <PropertyRef Name="idubicacion" />
+    </Key>
+    <Property Name="idubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ubicacion" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="latitud" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="longitud" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ciudadano__iddep__60A75C0F">
+    <End Role="departamento" Type="Self.departamento" Multiplicity="1" />
+    <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="iddepartamento" />
+      </Principal>
+      <Dependent Role="ciudadano">
+        <PropertyRef Name="iddepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ciudadano__iddis__628FA481">
+    <End Role="distrito" Type="Self.distrito" Multiplicity="1" />
+    <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="distrito">
+        <PropertyRef Name="iddistrito" />
+      </Principal>
+      <Dependent Role="ciudadano">
+        <PropertyRef Name="iddistrito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ciudadano__iddoc__6383C8BA">
+    <End Role="documento" Type="Self.documento" Multiplicity="1" />
+    <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documento">
+        <PropertyRef Name="iddocumento" />
+      </Principal>
+      <Dependent Role="ciudadano">
+        <PropertyRef Name="iddocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ciudadano__idest__5FB337D6">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idestado" />
+      </Principal>
+      <Dependent Role="ciudadano">
+        <PropertyRef Name="idestado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ciudadano__idnac__5EBF139D">
+    <End Role="nacionalidad" Type="Self.nacionalidad" Multiplicity="1" />
+    <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nacionalidad">
+        <PropertyRef Name="idnacionalidad" />
+      </Principal>
+      <Dependent Role="ciudadano">
+        <PropertyRef Name="idnacionalidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ciudadano__idpro__619B8048">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+    <End Role="ciudadano" Type="Self.ciudadano" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="idprovincia" />
+      </Principal>
+      <Dependent Role="ciudadano">
+        <PropertyRef Name="idprovincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PITModelStoreContainer">
+    <EntitySet Name="ciudadano" EntityType="Self.ciudadano" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="departamento" EntityType="Self.departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="distrito" EntityType="Self.distrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="documento" EntityType="Self.documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estado" EntityType="Self.estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nacionalidad" EntityType="Self.nacionalidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ciudadano__iddep__60A75C0F" Association="Self.FK__ciudadano__iddep__60A75C0F">
+      <End Role="departamento" EntitySet="departamento" />
+      <End Role="ciudadano" EntitySet="ciudadano" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ciudadano__iddis__628FA481" Association="Self.FK__ciudadano__iddis__628FA481">
+      <End Role="distrito" EntitySet="distrito" />
+      <End Role="ciudadano" EntitySet="ciudadano" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ciudadano__iddoc__6383C8BA" Association="Self.FK__ciudadano__iddoc__6383C8BA">
+      <End Role="documento" EntitySet="documento" />
+      <End Role="ciudadano" EntitySet="ciudadano" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ciudadano__idest__5FB337D6" Association="Self.FK__ciudadano__idest__5FB337D6">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="ciudadano" EntitySet="ciudadano" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ciudadano__idnac__5EBF139D" Association="Self.FK__ciudadano__idnac__5EBF139D">
+      <End Role="nacionalidad" EntitySet="nacionalidad" />
+      <End Role="ciudadano" EntitySet="ciudadano" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ciudadano__idpro__619B8048" Association="Self.FK__ciudadano__idpro__619B8048">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="ciudadano" EntitySet="ciudadano" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

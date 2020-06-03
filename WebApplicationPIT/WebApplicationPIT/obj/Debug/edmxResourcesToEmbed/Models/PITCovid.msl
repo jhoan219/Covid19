@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PITModelStoreContainer" CdmEntityContainer="PITCovidEntities">
+    <EntitySetMapping Name="ciudadano">
+      <EntityTypeMapping TypeName="PITModel.ciudadano">
+        <MappingFragment StoreEntitySet="ciudadano">
+          <ScalarProperty Name="idciudadano" ColumnName="idciudadano" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="idnacionalidad" ColumnName="idnacionalidad" />
+          <ScalarProperty Name="iddocumento" ColumnName="iddocumento" />
+          <ScalarProperty Name="numdocumento" ColumnName="numdocumento" />
+          <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="PITModel.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="distrito">
+      <EntityTypeMapping TypeName="PITModel.distrito">
+        <MappingFragment StoreEntitySet="distrito">
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documento">
+      <EntityTypeMapping TypeName="PITModel.documento">
+        <MappingFragment StoreEntitySet="documento">
+          <ScalarProperty Name="iddocumento" ColumnName="iddocumento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado">
+      <EntityTypeMapping TypeName="PITModel.estado">
+        <MappingFragment StoreEntitySet="estado">
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nacionalidad">
+      <EntityTypeMapping TypeName="PITModel.nacionalidad">
+        <MappingFragment StoreEntitySet="nacionalidad">
+          <ScalarProperty Name="idnacionalidad" ColumnName="idnacionalidad" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia">
+      <EntityTypeMapping TypeName="PITModel.provincia">
+        <MappingFragment StoreEntitySet="provincia">
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ubicacion">
+      <EntityTypeMapping TypeName="PITModel.ubicacion">
+        <MappingFragment StoreEntitySet="ubicacion">
+          <ScalarProperty Name="idubicacion" ColumnName="idubicacion" />
+          <ScalarProperty Name="ubicacion1" ColumnName="ubicacion" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
